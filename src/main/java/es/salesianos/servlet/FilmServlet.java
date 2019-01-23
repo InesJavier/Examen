@@ -9,49 +9,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.salesianos.model.Actor;
-import es.salesianos.model.Pelicula;
-import es.salesianos.service.Service;
-import es.salesianos.service.Service;
+import es.salesianos.model.Film;
+import es.salesianos.model.assembler.FilmAssembler;
+import es.salesianos.service.FilmService;
 
-public class PeliculaServlet extends HttpServlet {
+public class FilmServlet extends HttpServlet {
 
 
 	private static final long serialVersionUID = 1L;
 
-	private Service service = new Service();
+	private FilmService service = new FilmService();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String codString = req.getParameter("cod");
-		String title = req.getParameter("title");
-		String codDirectorString = req.getParameter("codDirector");
-		Pelicula pelicula = new Pelicula();
-		int cod = Integer.parseInt(codString);
-		pelicula.setCod(cod);
-		int codDirector = Integer.parseInt(codDirectorString);
-		pelicula.setCodDirector(codDirector);
-		pelicula.setTitle(title);
-		service.insert(pelicula);
+		Film film = FilmAssembler.assembleFilmFrom(req);
+		service.insert(film);
 		doAction(req, resp);
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String codString = req.getParameter("cod");
-		
-		if(null != codString) {
-			Pelicula pelicula = new Pelicula();
-			int cod = Integer.parseInt(codString);
-			pelicula.setCod(cod);
-			service.delete(pelicula);
+		String cod = req.getParameter("cod");
+		if(null != cod) {
+			service.delete(cod);
 		}
 		doAction(req, resp);
 	}
 
 	private void doAction(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		List<Pelicula> selectAllPelicula = service.selectAllPelicula();
-		req.setAttribute("listAllPeliculas", selectAllPelicula);
+		List<Film> selectAllFilms = service.selectAllFilm();
+		req.setAttribute("listAllFilms", selectAllFilms);
 		redirect(req, resp);
 	}
 

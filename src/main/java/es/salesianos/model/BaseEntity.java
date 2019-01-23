@@ -2,7 +2,6 @@ package es.salesianos.model;
 
 public class BaseEntity {
 
-	
 	private Integer cod;
 
 	public Integer getCod() {

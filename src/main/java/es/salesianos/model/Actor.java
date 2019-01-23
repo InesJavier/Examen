@@ -2,7 +2,6 @@ package es.salesianos.model;
 
 public class Actor extends Director{
 
-	
 	private Integer year;
 
 	public Integer getYear() {
