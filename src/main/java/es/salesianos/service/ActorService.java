@@ -7,7 +7,7 @@ import es.salesianos.repository.ActorRepository;
 
 public class ActorService {
 	
-private ActorRepository repository = new ActorRepository();
+	private ActorRepository repository = new ActorRepository();
 	
 	public List<Actor> filterAllActor(int beginDate, int endDate) {
 		return repository.filterAllActor(beginDate, endDate);

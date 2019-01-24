@@ -13,31 +13,17 @@
 <body>
 
 	<%
-		List<Actor> listAllActors = (List<Actor>) request.getAttribute("listAllActors");
+		List<Actor> listAllActors = (List<Actor>)request.getAttribute("listAllActors");
+		 request.getAttribute("codFilm");
 	%>
 
-	<form action="/actor" method="post">
-		<span>name:</span> <input type="text" name="name"> <br /> <span>year:</span>
-		<input type="text" name="year"> <br /> <input type="submit">
-	</form>
-	<br />
-
-	<form action="/actor" method="get">
-		<span>From:</span>
-		<input type="text" name="beginDate">
-		<span>To:</span>
-		<input type="text" name="endDate">
-		<input type="submit">
-	</form>
-	<br />
-	<br />
 	<table border="1">
 		<thead>
 			<tr>
-				<td>Cod</td>
-				<td>Title</td>
-				<td>codDirector</td>
-				<td>Delete</td>
+				<td>Cod Actor</td>
+				<td>name</td>
+				<td>year</td>
+				<td>Select</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,12 +32,11 @@
 					<td><c:out value="${actor.cod}" /></td>
 					<td><c:out value="${actor.name}" /></td>
 					<td><c:out value="${actor.year}" /></td>
-					<td><a href="/actor?cod=${actor.cod}">Delete</a></td>
+					<td><a href="/fillFilmActor?codActor=${actor.cod}&codFilm=${codFilm}">Select Actor</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-
 
 </body>
 </html>

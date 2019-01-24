@@ -7,7 +7,7 @@ import es.salesianos.repository.DirectorRepository;
 
 public class DirectorService {
 	
-DirectorRepository repository = new DirectorRepository();
+	DirectorRepository repository = new DirectorRepository();
 	
 	public List<Director> selectAllDirector() {
 		return repository.selectAllDirector();
@@ -23,4 +23,9 @@ DirectorRepository repository = new DirectorRepository();
 		director.setCod(cod);
 		repository.delete(director);
 	}
+	
+	public Director filterAllDirector(String name) {
+		return repository.filterAllDirector(name);
+	}
+	
 }
