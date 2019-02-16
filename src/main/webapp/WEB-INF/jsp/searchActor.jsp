@@ -12,16 +12,31 @@
 </head>
 <body>
 
-	<%
-		request.getAttribute("codFilm");
-		request.getAttribute("codActor");
-	%>
 
-
-	<form action="/fillFilmActor?codFilm=${codFilm}&codActor=${codActor}" method="post">
-		<span>Cache:</span> <input type="text" name="cache"> <br /> <span>Role:</span>
-		<input type="text" name="role"> <br /> <input type="submit">
+	<form action="/searchActor" method="post">
+		<span>Search Actor: <input type="text" name="name"></span> <br />
+		<input type="submit">
 	</form>
+	<br />
+	<br />
+
+	<table border="1">
+		<thead>
+			<tr>
+				<td>Director</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<c:forEach var="name" items="${listFilterDirector.name}">
+					<tr>
+						<td><c:out value="${name}" /></td>
+					</tr>
+				</c:forEach>
+			</tr>
+		</tbody>
+	</table>
+
 
 </body>
 </html>

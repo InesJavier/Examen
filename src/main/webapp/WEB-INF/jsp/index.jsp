@@ -12,7 +12,7 @@
 	<a href="/film">Films:</a><br/>
 	<a href="/director">Directors:</a><br/>
 	<a href="/actor">Actors:</a><br/>
-	<a href="/filmactor">Link films with actors:</a><br/>
+	<a href="/filmActor">Link films with actors:</a><br/>
 	<a href="/searchRole">Search by role</a><br/>
 	<a href="/searchActor">Search by actor</a><br/>
 </div>

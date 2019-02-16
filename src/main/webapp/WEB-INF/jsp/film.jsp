@@ -11,16 +11,18 @@
 </head>
 <body>
 
-<%
-List<Film> listAllFilms = (List<Film>)request.getAttribute("listAllFilms");
-%>
+	<form action="/insertFilm" method="post">
+		<span>title:</span> <input type="text" name="title"> <br />
+		<input type="submit">
+	</form>
 	
 <table border="1">
 	<thead>
 		<tr>
 			<td>Cod</td>
 			<td>Title</td>
-			<td>Link Actor</td>
+			<td>codDirector</td>
+			<td>Delete</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,7 +30,8 @@ List<Film> listAllFilms = (List<Film>)request.getAttribute("listAllFilms");
 			<tr>
 				<td><c:out value="${film.cod}"/> </td>
 				<td><c:out value="${film.title}"/> </td>
-				<td><a href="/recoveryFilm?cod=${film.cod}">Link</a></td>
+				<td><c:out value="${film.codDirector}"/> </td>
+				<td><a href="/deleteFilm?cod=${film.cod}">Delete</a> </td>
 	    	</tr>
 		</c:forEach>
 	</tbody>
